@@ -38,8 +38,7 @@ class MainUi(object):
         self.model_path = None
         self.use_tracker = None
         self.confidence_threshold = None
-        self.video_path = 'demo.mp4'
-
+        self.video_options = {'demo.mp4':'resources/demo.mp4'}
         self.init_layout()
         self.init_components()
              
@@ -63,19 +62,14 @@ class MainUi(object):
     def init_main(self):
         # init online page
         with self.main_discription:
-            with st.expander("README>>"):   # todo good readme
+            with st.expander("README.md"):   # todo good readme
                 readme()
         self.main_screen.image(np.zeros((480, 640, 3), np.uint8), channels='BGR')
  
     def init_source_sidebar(self):
-        # with self.sidebar_source:
         self.sidebar_source.markdown('---')
-        source_video = self.sidebar_source.file_uploader(
-            label="Choose a video...",
-            type=['mp4']
-        )
-        if source_video:
-            self.video_path = save_temp_file(source_video)
+        selected_video = self.sidebar_source.selectbox(self.ui_cfg['sidebar_select_video'], self.video_options)
+        self.video_path = self.video_options.get(selected_video)
 
     def init_model_sidebar(self):
         self.sidebar_model.markdown('---')
@@ -97,13 +91,12 @@ class MainUi(object):
                 self.button_stop = st.button(self.ui_cfg['button_stop'])
 
     def frame_selector_sidebar(self, frames):
-        min_elts, max_elts = self.sidebar_frame_selector.slider(self.ui_cfg['slider_select_frames'], 0, len(frames), [0, len(frames)])
+        min_elts, max_elts = self.sidebar_frame_selector.slider(self.ui_cfg['sidebar_select_frames'], 0, len(frames), [0, len(frames)])
         selected_frames = frames[min_elts:max_elts]
-        selected_frame_index = self.sidebar_frame_selector.slider(self.ui_cfg['slider_choose_frame'], min_elts, max_elts, min_elts)
+        selected_frame_index = self.sidebar_frame_selector.slider(self.ui_cfg['sidebar_choose_frame'], min_elts, max_elts, min_elts)
         if len(selected_frames) < 1:
             return None, None
         return selected_frames, selected_frame_index
   
-
     def show(self,frame):
         self.main_screen.image(frame, channels='BGR')

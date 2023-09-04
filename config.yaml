@@ -1,13 +1,16 @@
 ui_cfg:
+  # sidebar model
   selectbox_model_select: Select a Model (will download from ultralytics model hub initially)
   model_options: ['yolov8n.pt', 'yolov8n-seg.pt', 'yolov8n-pose.pt','input your own path']
   input_model_path: Model Path
   selectbox_use_tracker: Use Tracker
   tracker_options: ['','botsort.yaml', 'bytetrack.yaml']
   slider_confidence_threshold: Confidence Threshold
-  slider_select_frames: Select Frames
-  slider_choose_frame: Choose a Frame(Index)
-
+  #sidebar source
+  sidebar_select_video: Select a Video
+  sidebar_select_frames: Select Frames
+  sidebar_choose_frame: Choose a Frame(Index)
+  # main 
   button_predict_one: Predict a Frame
   button_predict_all: Predict All Frames
   button_stop: Stop Predict

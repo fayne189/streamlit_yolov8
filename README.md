@@ -1,6 +1,6 @@
 # README.md
 
-## 介绍
+## Introduction
 
 该项目提供了一个用户友好的基于Streamlit的交互界面，用于YOLOv8目标检测模型。我想利用这个项目对个人现阶段的一些技能和专业知识做个简单的总结，并用一个系列的博客来记录和分享项目的开发过程及其中涉及的机器视觉知识。如果你对此感兴趣，欢迎去[我的博客](https://fayne189.github.io/index.html)阅读系列文章，并与我交流。
 
@@ -12,7 +12,16 @@
 
 我将使用3个标签来标识这些阶段，分别是Base（基础）、Advanced（高级）和Final（最终）。
 
-## 安装
+## Milestones
+
+1. 可视化模型推理结果
+
+![Untitled](resources/mliestone_base.png)
+
+1. TODO 实现几何图形间的交互条件逻辑
+2. TODO 可自定义逻辑及条件触发行为
+
+## Installation
 
 ### 安装依赖包
 
@@ -45,7 +54,7 @@ docker build -t ${imagename} .
 streamlit run app.py
 ```
 
-## 开发计划
+## Roadmap
 
 - [x]  多种计算机视觉任务，包括检测、分割、分类和姿态估计等
 - [x]  可视化模型推理结果
