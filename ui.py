@@ -62,22 +62,14 @@ class MainUi(object):
     def init_main(self):
         # init online page
         with self.main_discription:
-            with st.expander("README>>"):   # todo good readme
+            with st.expander("README.md"):   # todo good readme
                 readme()
         self.main_screen.image(np.zeros((480, 640, 3), np.uint8), channels='BGR')
  
     def init_source_sidebar(self):
         self.sidebar_source.markdown('---')
-        source_video = self.sidebar_source.file_uploader(
-            label="Choose a video...",
-            type=['mp4']
-        )
-        if source_video:
-            temp_path = save_temp_file(source_video)
-            self.video_options.update({source_video.name:temp_path})
-        selected_video = self.sidebar_source.selectbox(self.ui_cfg['sidebar_select_video'], self.video_options, index=len(self.video_options)-1 if source_video else 0)
+        selected_video = self.sidebar_source.selectbox(self.ui_cfg['sidebar_select_video'], self.video_options)
         self.video_path = self.video_options.get(selected_video)
-        print(self.video_options)
 
     def init_model_sidebar(self):
         self.sidebar_model.markdown('---')
@@ -106,6 +98,5 @@ class MainUi(object):
             return None, None
         return selected_frames, selected_frame_index
   
-
     def show(self,frame):
         self.main_screen.image(frame, channels='BGR')

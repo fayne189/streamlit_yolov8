@@ -7,7 +7,6 @@ ui_cfg:
   tracker_options: ['','botsort.yaml', 'bytetrack.yaml']
   slider_confidence_threshold: Confidence Threshold
   #sidebar source
-  sidebar_file_uploader: Upload a Video
   sidebar_select_video: Select a Video
   sidebar_select_frames: Select Frames
   sidebar_choose_frame: Choose a Frame(Index)
