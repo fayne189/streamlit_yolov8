@@ -32,6 +32,17 @@ def readme():
     st.markdown(''.join(readme_buffer))
 
 class MainUi(object):
+    """
+    This is the Main User Interface (UI) class for the application.
+    
+    Attributes:
+        cfg: A dictionary containing the configuration settings for the application.
+        ui_cfg: A dictionary containing the configuration settings for the UI.
+        model_path: A string representing the path to the model to be used.
+        use_tracker: A boolean indicating whether to use a tracker or not.
+        confidence_threshold: A float representing the confidence threshold for the model predictions.
+        video_options: A dictionary containing the video options available for selection in the UI.
+    """
     def __init__(self, cfg):
         self.cfg = cfg
         self.ui_cfg = cfg.get('ui_cfg')
