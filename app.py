@@ -18,14 +18,17 @@ if cfg is None:
 
 
 class MyModel(object):
-    '''
-    负责画面呈现, 条件判断及行为执行 
-    '''
+    """
+    This is a wrapper class for the YOLO model.
+
+    Attributes:
+        model: The YOLO model.
+    """
+    
     def __init__(self, model):
         self.model = model
 
     def inference(self, frame, conf=0.5, tracker=''):
-        # 得到模型输出的boxes及tracker_id
         if tracker:
             res = self.model.track(frame, persist=True, conf=conf, tracker=tracker)
         else:
